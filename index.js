@@ -2,12 +2,15 @@ const express = require('express');
 const app = express()
 
 app.set('port', (process.env.PORT || 5000))
+app.set('views', __dirname + '/views')
+app.use(app.router)
 app.use(express.static(__dirname + '/public'))
+
 
 app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('index')
 })
 
 app.listen(app.get('port'), function() {
@@ -15,6 +18,6 @@ app.listen(app.get('port'), function() {
 })
 
 app.post('/', function (req, res) {
-  res.render('index');
+  res.render('index')
 })
 
